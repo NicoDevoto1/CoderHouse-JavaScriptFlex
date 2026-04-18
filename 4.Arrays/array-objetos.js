@@ -8,7 +8,7 @@
 
 //Los arrays (o arreglos) son un tipo de dato que nos permite agrupar elementos en forma de listas
 
-const arrayMartes = ["Nicolas", "Manuel", "Santiago", "Mariano"];
+//const arrayMartes = ["Nicolas", "Manuel", "Santiago", "Mariano"];
 
 // console.log(arrayMartes);
 // console.log (arrayMartes[2]);
@@ -50,7 +50,50 @@ const arrayMartes = ["Nicolas", "Manuel", "Santiago", "Mariano"];
 // console.log(arrayMartes.includes("Santiago"));
 // console.log(arrayMartes.includes(""));
 
+//Que es un objeto? Un objeto es una coleccion de pares clave-valor que permite almacenar y organizar datos relacionados bajo un mismo nombre: Ejemplo
 
+// let persona = {
+//     nonbre: 'Ana',
+//     edad: 20
+// }
 
+// let producto = {
+//     id: 101,
+//     nombre: 'camisa',
+//     precio: 29.99
+// }
+
+//Hay dos manera de acceder a los objetos, primero si sabemos su nombre específico y su identificador es valido.
+
+// console.log(producto.nombre); // 'Camisa'
+
+//Permite acceder a propiedades usando una cadena (string), útil para nombres dinámicos o que no son identificadores válidos.
+
+// console.log(producto['precio']); // 29.99
+// let prop = 'id';
+// console.log(producto[prop]); // 101
+
+//Podemos cambiar el valor de una propiedad o agregar una nueva asignando un valor:
+// producto.precio = 24.99; // modifica
+// producto.color = 'azul'; // agrega
+
+//Si accedemos a una propiedad que no existe, el resultado es undefined:
+
+// console.log(producto.talla); // undefined
+
+const producto = {
+    id: 1001,
+    nombre: 'Remera',
+    disponible: true,
+    talles: ['S', 'M', 'L'],
+    detalles: {
+        color: 'Azul',
+        material: 'Algodon',
+    },
+};
+
+producto.stock = 10
+
+console.log(producto);
 
 
