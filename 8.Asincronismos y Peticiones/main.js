@@ -42,3 +42,29 @@ setInterval(() => {
   console.log('Este mensaje se repite cada segundo');
 }, 1000);
 
+// Cancelación de temporizadores en JavaScript
+// Cuando creas un temporizador con setTimeout o setInterval, estas funciones devuelven un identificador único (un número) que representa ese temporizador. Para detener la ejecución programada, debes usar las funciones complementarias clearTimeout y clearInterval respectivamente, pasando ese identificador.
+
+const dosSegundos = setTimeout(() => {
+  console.log('Esto se ejecuta después de 2 segundos');
+}, 2000);
+
+// Para cancelar el temporizador antes de que se ejecute:
+clearTimeout(dosSegundos);
+
+//De forma similar para intervalos periodicos
+
+const unSegundo = setInterval(() => {
+  console.log('Esto se ejecuta cada segundo');
+}, 1000);
+
+// Para detener el intervalo:
+clearInterval(unSegundo);
+
+// Patrones para guardar identificadores de timers
+// Es buena práctica almacenar los IDs de temporizadores en variables o propiedades accesibles para poder cancelarlos cuando sea necesario, especialmente en aplicaciones con ciclos de vida complejos (como componentes en frameworks).
+// Evitar múltiples timers solapados
+// Crear varios timers sin cancelar los anteriores puede generar ejecuciones simultáneas no deseadas. Siempre verifica si un timer está activo antes de crear uno nuevo, y cancela el anterior si es necesario.
+
+
+
