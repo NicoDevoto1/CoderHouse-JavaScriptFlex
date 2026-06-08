@@ -384,3 +384,51 @@ console.log("\n--- Pruebas finalizadas ---");
 // | Flujo del código | **No detiene** la ejecución. El código de abajo se sigue ejecutando normalmente. | **Detiene** la ejecución inmediatamente a menos que sea capturado por un `try/catch`.
 
 // | Propósito | Informar al desarrollador o dejar un registro (log) de que algo falló, sin romper la app. | Asegurar que el programa no continúe operando con datos inválidos o en un estado corrupto.
+
+// function probarConsole() {
+//   console.error("Esto es solo un aviso de error");
+//   console.log("¡Yo me sigo ejecutando igual!"); // Se ejecuta
+// }
+
+// function probarThrow() {
+//   throw new Error("¡Freno de mano! Algo salió muy mal");
+//   console.log("Este mensaje NUNCA se va a leer"); // Código inaccesible
+// }
+
+//1. Envolver lógica crítica en try/catch dentro de callbacks
+// Cuando una función asincrónica ejecuta un callback, cualquier error que ocurra dentro de ese callback no será capturado por un try/catch externo. Por eso, es buena práctica envolver la lógica interna del callback en un bloque try/catch para capturar errores localmente.
+
+// setTimeout(() => {
+//   try {
+//     // Lógica crítica que puede fallar
+//     let result = doSomethingRisky();
+//     console.log('Resultado:', result);
+//   } catch (error) {
+//     console.error('Error capturado en callback:', error);
+//     // Aquí podemos realizar acciones de recuperación o logging
+//   }
+// }, 1000);
+
+// 2. Propagar errores mediante callbacks con firma (err, result)
+// Un patrón común en Node.js y JavaScript es usar callbacks que reciben un primer parámetro para el error y un segundo para el resultado. Esto permite que la función asincrónica informe errores al llamador, quien decide cómo manejarlos.
+
+// function asyncOperation(callback) {
+//   setTimeout(() => {
+//     try {
+//       let data = fetchData();
+//       callback(null, data); // Sin error
+//     } catch (err) {
+//       callback(err); // Propagamos el error
+//     }
+//   }, 500);
+// }
+
+// asyncOperation((err, result) => {
+//   if (err) {
+//     console.error('Error recibido:', err);
+//     // Manejo o recuperación
+//   } else {
+//     console.log('Resultado:', result);
+//   }
+// });
+
