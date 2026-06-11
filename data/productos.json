@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "nombre": "Remera Santos",
+    "precio": 15000,
+    "imagen": "remera-hombre-Santos.jpg",
+    "alt": "Remera oversize blanca para hombre Kondor modelo Santos",
+    "categoria": "Remeras",
+    "genero": "Hombre"
+  },
+  {
+    "id": 2,
+    "nombre": "Remera Deep Ocean",
+    "precio": 42000,
+    "imagen": "remera-Unisex-Oversize-DeepOcean.jpg",
+    "alt": "Remera oversize color azul marino unisex Kondor modelo Deep Ocean",
+    "categoria": "Remeras",
+    "genero": "Unisex"
+  },
+  {
+    "id": 3,
+    "nombre": "Remera Cycling Club",
+    "precio": 12500,
+    "imagen": "remera-Mujer-Oversize-Blanca-CyclingClub.jpg",
+    "alt": "Remera oversize color blanca con estampado Kondor modelo Cycling Club",
+    "categoria": "Remeras",
+    "genero": "Mujer"
+  },
+  {
+    "id": 4,
+    "nombre": "Buzo Ole",
+    "precio": 25000,
+    "imagen": "Buzo-Hombre-Negro-Blanco.jpg",
+    "alt": "Buzo con cuello chomba color negro y blanco hombre Kondor modelo Ole",
+    "categoria": "Buzos",
+    "genero": "Hombre"
+  },
+  {
+    "id": 5,
+    "nombre": "Campera Rompeviento Hix",
+    "precio": 35000,
+    "imagen": "camperaRompeViento-Hombre-VerdeOscuro.jpg",
+    "alt": "Campera Rompe Viento color verde oscuro y negro hombre Kondor modelo Hix",
+    "categoria": "Camperas",
+    "genero": "Hombre"
+  },
+  {
+    "id": 6,
+    "nombre": "Campera NorthFace",
+    "precio": 38000,
+    "imagen": "camperaNorthFace-Hombre-verdePantano.jpg",
+    "alt": "Campera Northface color verde pantano tipo impermeable hombre Kondor",
+    "categoria": "Camperas",
+    "genero": "Hombre"
+  },
+  {
+    "id": 7,
+    "nombre": "Remera NonStraight",
+    "precio": 40000,
+    "imagen": "remeraNonStraight-Hombre-Básicas.jpg",
+    "alt": "Remera básica hombre colores clásicos Kondor modelo NonStraight",
+    "categoria": "Remeras",
+    "genero": "Hombre"
+  },
+  {
+    "id": 8,
+    "nombre": "Jean Baggy Croc",
+    "precio": 65000,
+    "imagen": "jeanBaggyCroc.jpg",
+    "alt": "Jean Baggy mujer color azul clásico Kondor modelo Croc",
+    "categoria": "Pantalones",
+    "genero": "Mujer"
+  }
+]
