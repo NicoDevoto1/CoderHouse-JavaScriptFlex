@@ -1,0 +1,46 @@
+.hero-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: $bg-oscuro;
+    overflow: hidden;
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url('../../assets/hero-background.jpg');
+        background-size: cover;
+        background-position: center;
+        filter: blur(20px) brightness(0.4);
+        transform: scale(1.1);
+        z-index: 0;
+    }
+}
+
+.hero {
+    position: relative;
+    z-index: 1;
+    padding: 140px;
+    color: $text-white;
+}
+
+// Estilos del texto del hero
+.hero__title {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    line-height: 1.1;
+    margin: 1rem 0 2rem;
+    @include heading-style(map-get($heading-sizes, "h1"), 900, color('white')); // Usamos el mixin con un tamaño específico
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 2s ease forwards;
+}
+
+.hero__media img { max-width: 420px; width: 100%; height: auto; }
+
+// Responsive
+@media (max-width: 768px) {
+    .hero { padding-top: 100px; }
+    .hero__media img { max-height: 45vh; }
+    .hero__title { font-size: 2.2rem; }
+}

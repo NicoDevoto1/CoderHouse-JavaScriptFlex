@@ -1,0 +1,17 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-y: scroll;
+}
+
+body {
+    font-family: $font-stack;
+    color: color('text'); // Utilizo la función del mapa para el color
+    background-color: color('white');
+    line-height: 1.6;
+}

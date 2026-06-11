@@ -1,27 +1,298 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
+
+    <title>Kondor | Ropa Deportiva Urbana para Hombre y Mujer</title>
+
+    <meta name="description"
+        content="Kondor ofrece ropa deportiva urbana para hombre y mujer: camperas, remeras, pantalones y buzos con estilo streetwear. Envíos a todo el país.">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-    <title>Clase 2</title>
 
-    <link rel="stylesheet" href="">
+    <!--Etiquetas Open Graph (para redes)-->
+    <meta property="og:title" content="Kondor | Ropa deportiva urbana">
+    <meta property="og:description" content="Descubrí camperas, remeras y ropa urbana de Kondor.">
+    <meta property="og:image" content="assets/hero-background.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.kondor.com">
+
+    <!--Favicon (lo usa google)-->
+    <link rel="icon" href="assets/KondorBlanco.svg" type="image/png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="styles/style.css">
+
 </head>
 
 <body>
 
-    <button onClick = "dispararAlerta()">
-        Cliquea aqui
-    </button>
-    
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="/9.Promesa/main.js"> </script>
-    
+    <header class="fixed-top negro-kondor shadow-sm">
+        <nav class="navbar navbar-expand-lg navbar-dark p-0">
+            <div class="container-fluid px-4">
+                <div class="row w-100 align-items-center g-0">
+                    <div class="col-lg-4 d-none d-lg-flex gap-3">
+                        <a class="nav-link text-white enlace" href="../index.html">Home</a>
+                        <a class="nav-link text-white enlace" href="#">Página</a>
+                        <a class="nav-link text-white enlace" href="#">Todo lo nuevo</a>
+                        <a class="nav-link text-white enlace" href="pages/contacto.html">Contacto</a>
+                    </div>
 
-    
+                    <div class="col-6 col-lg-4 text-start text-lg-center">
+                        <a class="navbar-brand m-0" href="../index.html">
+                            <img src="../assets/KondorBlanco.svg" loading="lazy" alt="Kondor Marca" height="32">
+                        </a>
+                    </div>
+
+                    <div class="col-6 col-lg-4 d-flex justify-content-end align-items-center gap-3">
+                        <div class="d-none d-lg-flex align-items-center gap-3">
+                            <a class="nav-link text-white" href="#">Ingresar</a>
+                            <a href="../pages/carrito.html" class="btn-carrito-limpio">
+                                CARRITO (0)
+                            </a>
+                        </div>
+                        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#mobileMenu">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="collapse navbar-collapse" id="mobileMenu">
+                    <ul class="navbar-nav d-lg-none mt-3 pb-3 text-center border-top border-white-50">
+                        <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Página</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Todo lo nuevo</a></li>
+                        <li class="nav-item"><a class="nav-link" href="pages/contacto.html">Contacto</a></li>
+                        <li class="nav-item pt-2 border-top border-white-25"><a class="nav-link" href="#">Ingresar</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="hero-wrapper">
+        <section class="hero d-flex align-items-center">
+            <div class="container position-relative z-1">
+                <div class="row align-items-center min-vh-100 py-5">
+
+                    <div class="col-lg-6 text-center text-lg-start mb-5 mb-lg-0">
+                        <span class="hero__eyebrow text-white-50 d-block mb-2 font-title-sc">LO MEJOR DE LO
+                            URBANO</span>
+                        <h1 class="hero__title text-white fw-bold mb-4">
+                            Camperas<br>para todo el año
+                        </h1>
+                        <button class="btn btn-light btn-lg rounded-0 px-5 py-3 fw-bold">
+                            TENDENCIAS
+                        </button>
+                    </div>
+
+                    <div class="col-lg-6 text-center">
+                        <div class="hero__media">
+                            <img src="assets/hero-background.jpg" class="img-fluid shadow-lg" alt="Campera Urbana">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+
+    <main>
+        <section class="todo-lo-nuevo">
+
+            <div class="section-header">
+                <h2 class="section-title">Todo lo nuevo</h2>
+                <ul class="category-filter">
+                    <li><a href="pages/mujeres.html">Mujer</a></li>
+                    <li><a href="pages/Pantalones.html">Pantalones</a></li>
+                    <li><a href="pages/hombre.html">Hombre</a></li>
+                    <li><a href="pages/Remeras.html">Remeras</a></li>
+                </ul>
+            </div>
+            <!--Grilla con los productos nuevos-->
+            <div class="productos-grid">
+
+                <article class="product-card">
+                    <div class="img-container">
+                        <img src="assets/remera-hombre-Santos.jpg"
+                            alt="Remera oversize blanca para hombre Kondor modelo Santos">
+                    </div>
+                    <div class="product-info">
+                        <h4>Remera Santos</h4>
+                        <p>$15.000</p>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="img-container">
+                        <img src="assets/remera-Unisex-Oversize-DeepOcean.jpg" loading="lazy"
+                            alt="Remera oversize color azul marino unisex Kondor modeolo Deep Ocean">
+                    </div>
+                    <div class="product-info">
+                        <h4>Remera Deep Ocean</h4>
+                        <p>$42.000</p>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="img-container">
+                        <img src="assets/remera-Mujer-Oversize-Blanca-CyclingClub.jpg" loading="lazy"
+                            alt="Remera oversize color blanca con estampado blanca Kondor modelo Cycling Club">
+                    </div>
+                    <div class="product-info">
+                        <h4>Remera Cycling Club</h4>
+                        <p>$12.500</p>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="img-container">
+                        <img src="assets/Buzo-Hombre-Negro-Blanco.jpg" loading="lazy"
+                            alt="Buzo con cuello chomba color negro y Blanco hombre Kondor modelo Ole">
+                    </div>
+                    <div class="product-info">
+                        <h4>Buzo Ole</h4>
+                        <p>$25.000</p>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="img-container">
+                        <img src="assets/camperaRompeViento-Hombre-VerdeOscuro.jpg" loading="lazy"
+                            alt="Campera Rompe Viento color verde oscuro y negro hombre Kondor modelo HH">
+                    </div>
+                    <div class="product-info">
+                        <h4>Campera rompeviento Hix</h4>
+                        <p>$35.000</p>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="img-container">
+                        <img src="assets/camperaNorthFace-Hombre-verdePantano.jpg" loading="lazy"
+                            alt="Campera Northface Color Verde Pantano tipo impermeable hombre Kondor modelo Hitclimb ">
+                    </div>
+                    <div class="product-info">
+                        <h4>Campera NorthFace</h4>
+                        <p>$38.000</p>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="img-container">
+                        <img src="assets/remeraNonStraight-Hombre-Básicas.jpg" loading="lazy"
+                            alt="Remera básica hombre colores clásicos Kondor modelo NonStraight">
+                    </div>
+                    <div class="product-info">
+                        <h4>Remera NonStraight</h4>
+                        <p>$40.000</p>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="img-container">
+                        <img src="assets/jeanBaggyCroc.jpg" loading="lazy"
+                            alt="Jean Baggy mujer color azul clásico Kondor modelo Croc">
+                    </div>
+                    <div class="product-info">
+                        <h4>Jean Baggy Croc</h4>
+                        <p>$65.000</p>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+        <!--Sección de las últimas noticias sobre lo nuevo-->
+        <section class="news-section">
+
+            <h3 class="section-title">Últimas noticias</h3>
+            <div class="news-grid">
+
+                <div class="news-col-left">
+                    <div class="news-card vertical-card">
+                        <img src="assets/conjuntos-Tendencias-Verano-Kondor.jpg"
+                            alt="Conjuntos tendencia verano hombre y mujer Kondor">
+                        <h4 class="news-card__title">Lo que el verano nos dejo</h4>
+                    </div>
+                </div>
+                <div class="news-col-right">
+
+                    <div class="news-row-top">
+                        <div class="news-card horizontal-card">
+                            <img src="assets/tendenciasQueNuncaMueren-Kondor.jpg"
+                                alt="Tendencias que nunca mueren marca Kondor">
+                            <h4 class="news-card__title">Tendencias que nunca mueren</h4>
+                        </div>
+                    </div>
+
+                    <div class="news-row-bottom">
+
+                        <div class="news-card small-card">
+                            <img src="assets/conjunto-Hombre-MoreMoneyMoreLove-Kondor.jpg"
+                                alt="Conjuntos Hombre More Money More Love Marca Kondor">
+                            <h4 class="news-card__title">Conjuntos que no cansan</h4>
+                        </div>
+                        <div class="news-card small-card last">
+                            <img src="assets/campera-Abrigo-Mujer-Blanca-Muppet.jpg"
+                                alt="Campera de Abrigo Mujer color Blanca modelo Muppet Marca Kondor">
+                            <h4 class="news-card__title">El invierno no es excusa para no salir</h4>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="seccion-banner">
+            <div class="contenido-banner">
+                <h2> <mark class="rojo">No</mark> te pierdas las tendencias</h2>
+                <p>Descubrir las modas es descubrirte a vos</p>
+                <button class="btn-suscribirse">Shop</button>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>KONDOR 2025</h4>
+                <p>Tu tendencia, tu identidad. Explorá las mejores colecciones para tu estilo diario.</p>
+            </div>
+            <div class="footer-column">
+                <h5>Enlaces rápidos</h5>
+                <ul>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">Tendencias</a></li>
+                    <li><a href="#">Sobre nosotros</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h5>Seguinos</h5>
+                <div class="social-icons">
+                    <a href="#" class="icon">f</a>
+                    <a href="#" class="icon">X</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Kondor-2025. Defensa de las y los consumidores. <a href="#">Para reclamos ingrese aquí</a></p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Toastify -->
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+    <!-- JS de Kondor -->
+    <script src="js/carrito.js"></script>
+    <script src="js/index.js"></script>
 
 </body>
 

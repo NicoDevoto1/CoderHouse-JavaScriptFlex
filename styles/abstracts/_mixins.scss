@@ -1,0 +1,70 @@
+// Mixin para Flexbox centrado
+@mixin flex-center($direction: row, $justify: center, $align: center) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+// Mixin para imagen de fondo (Hero)
+@mixin bg-cover($url) {
+    background-image: url($url);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(20px) brightness(0.4);
+    transform: scale(1.1);
+}
+
+// --- MIXIN FALTANTE (ESTO ARREGLA EL ERROR EN HOME) ---
+@mixin titulo-seccion {
+    text-align: center;
+    h2 {
+        font-size: 36px;
+        margin-bottom: 20px;
+        text-transform: capitalize;
+    }
+}
+
+// Esto añade un poco de oscuridad para los títulos de la sección noticias
+@mixin overlay-titulo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    // Degradado sutil para que el texto blanco resalte
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    color: color('white');
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    pointer-events: none; // Para que no interfiera con el clic en la imagen
+}
+
+// Mixin para crear un gradiente divisorio suave
+@mixin bg-gradiente-seccion($color-top: color('primary'), $color-bottom: color('white')) {
+    background: linear-gradient(to bottom, $color-top 0%, $color-bottom 100%);
+}
+
+//TIPOGRAFIAS MIXIN
+// Un solo mixin para todos los títulos de KONDOR
+@mixin heading-style($size, $weight: 900, $color: color('black')) {
+    font-family: $font-primary; 
+    font-size: $size;
+    font-weight: $weight;
+    color: $color; // Aquí SASS ya sabe qué color aplicar
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+}
+
+// Mixin para Cuerpos de texto
+@mixin font-body($size: 1rem, $weight: 400) {
+    font-family: $font-secondary;
+    font-size: $size;
+    font-weight: $weight;
+    line-height: 1.6;
+}
+

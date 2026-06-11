@@ -1,0 +1,132 @@
+// --- SECCIÓN "TODO LO NUEVO" ---
+.todo-lo-nuevo {
+    padding: 60px 20px;
+    background-color: color('white');
+    text-align: center;
+
+    .section-header {
+        h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-transform: capitalize;
+        }
+
+        // Filtros Centrados
+        .category-filter {
+            list-style: none;
+            margin-bottom: 40px;
+            padding: 0;
+            display: flex; // Flex para alinear
+            justify-content: center; // Centrado horizontal
+            gap: 30px; // Separación entre palabras
+
+            li a {
+                text-decoration: none;
+                color: #666;
+                font-size: 16px;
+                font-weight: 500;
+                transition: color 0.3s;
+
+                &:hover {
+                    color: color('black');
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
+// --- SECCIÓN NOTICIAS (Mosaico) ---
+.news-section {
+
+    @include bg-gradiente-seccion;
+
+    padding: 60px 50px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 100px 40px;
+
+    .section-title {
+        @include heading-style(map-get($heading-sizes, "h2"), 600, color('black')); // Usamos el mixin con un tamaño específico
+    }
+
+    .news-grid {
+        display: grid;
+        grid-template-columns: 40% 58%; // Proporción exacta de las columnas del grid
+        gap: 2%;
+
+        // Columna Izquierda (Foto Grande)
+        .news-col-left {
+            .news-card.vertical-card {
+                height: 620px; // Altura fija para igualar la derecha
+                width: 100%;
+                background-color: #ddd;
+                img { width: 100%; height: 100%; object-fit: cover; }
+            }
+        }
+
+        // Columna Derecha (Mix)
+        .news-col-right {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; // Separa arriba y abajo
+
+            .news-card.horizontal-card {
+                height: 300px;
+                width: 100%;
+                background-color: #ddd;
+                img { width: 100%; height: 100%; object-fit: cover; }
+            }
+
+            .news-row-bottom {
+                display: flex;
+                justify-content: space-between;
+                
+                .news-card.small-card {
+                    width: 48%; // Casi la mitad
+                    height: 300px;
+                    background-color: #ddd;
+                    img { width: 100%; height: 100%; object-fit: cover; }
+                }
+            }
+        }
+    }
+
+    // Responsive para Noticias
+    @media (max-width: 768px) {
+        .news-grid {
+            grid-template-columns: 1fr; // Una columna
+            .news-col-left, .news-col-right { width: 100%; }
+            .news-card.vertical-card { height: 400px; margin-bottom: 20px; }
+            .news-row-bottom { flex-direction: column; gap: 20px; }
+            .news-card.small-card { width: 100% !important; }
+        }
+    }
+}
+
+// --- BANNER FINAL ---
+.seccion-banner {
+    background-image: url('../../assets/ImgBanner.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; // Alineado a la derecha
+    padding: 0 80px;
+
+    .contenido-banner {
+        background-color: color('dark');
+        padding: 20px 30px;
+        border-radius: 8px;
+        color: color('gray');
+        text-align: center;
+        max-width: 400px;
+
+        h2 { font-size: 40px; margin: 0; }
+        p { font-size: 20px; margin: 10px 0; }
+        
+        .rojo { color: color('primary'); background: none; }
+    }
+}

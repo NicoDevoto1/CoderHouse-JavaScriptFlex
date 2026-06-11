@@ -1,0 +1,38 @@
+/// 1. EL MAPA
+$colors: (
+    'primary': #F38420,
+    'white': #ffffff,
+    'dark': #1a1a1a,
+    'gray': #f0f0f0,
+    'text': #333333,
+    'black': #000000
+);
+
+// 2. FUNCIÓN (Impecable, no se toca)
+@function color($name) {
+    @return map-get($colors, $name);
+}
+
+// 3. VARIABLES PUENTE (Corregidas para coincidir con el mapa)
+$naranja-kondor: color('primary');
+$negro-kondor:   color('black'); // Antes decía 'negro' y rompía el compilador
+$text-white:     color('white');
+$bg-oscuro:      color('dark');
+$gris-claro:     color('gray');
+
+// 4. TIPOGRAFÍA
+$font-stack: 'Helvetica Neue', Arial, sans-serif;
+
+@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap');
+$font-primary: 'Fugaz One', sans-serif; //Para títulos
+
+@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+$font-secondary: 'Montserrat', sans-serif;
+
+// Mapa de tamaños de títulos
+$heading-sizes: (
+    "h1": clamp(3rem, 8vw, 5rem),  // Para el Hero y "Moverte es Querer"
+    "h2": 2.5rem,                  // Para "Todo lo nuevo" y "Últimas noticias"
+    "h3": 1.5rem,                  // Títulos intermedios de tarjetas
+    "h4": 1.1rem                   // Títulos pequeños
+);

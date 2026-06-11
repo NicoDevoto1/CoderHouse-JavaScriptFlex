@@ -1,0 +1,14 @@
+footer {
+    background-color: #111;
+    color: #888;
+    padding: 50px 20px;
+    text-align: center;
+    margin-top: 100px;
+    
+    hr { border: 0; border-top: 1px solid #333; margin: 30px auto; max-width: 800px; }
+}
+
+.social-icons a {
+    display: inline-block; color: white; font-size: 20px; margin: 0 15px;
+    border: 1px solid white; width: 40px; height: 40px; line-height: 40px; border-radius: 50%;
+}

@@ -1,0 +1,30 @@
+.btn-carrito-limpio {
+    background: none !important;
+    border: 1px solid $text-white !important;
+    padding: 8px 20px !important;
+    color: $text-white !important;
+    text-decoration: none !important;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    display: inline-block;
+
+    &:hover {
+        background-color: $text-white !important;
+        color: #000000 !important;
+    }
+}
+
+.btn-suscribirse {
+    padding: 12px;
+    background-color: $gris-claro;
+    color: #000;
+    font-weight: bold;
+    font-size: medium;
+    border: none;
+    border-radius: 20px 0px 20px 0px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}

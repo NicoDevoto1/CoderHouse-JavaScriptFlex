@@ -1,0 +1,52 @@
+// Variables para consistencia
+$transicion-suave: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+$color-rojo: #ff4d4d; // El rojo de tu "No"
+
+// Mixin para animaciones de entrada
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.news-card {
+  overflow: hidden;
+  border-radius: 8px 0px 8px 0px; // Un toque redondeado queda más moderno
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: $transicion-suave;
+  animation: fadeInUp 0.8s ease-out forwards;
+
+  img {
+    transition: $transicion-suave;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+
+    img {
+      transform: scale(1.1); // El zoom que mencionabas
+      filter: brightness(0.8);
+    }
+  }
+}
+
+// Banner con un toque de pulso
+.btn-suscribirse {
+  transition: $transicion-suave;
+  &:hover {
+    background-color: $color-rojo;
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba($color-rojo, 0.4);
+  }
+}
