@@ -1,3 +1,15 @@
+// =============================================================================
+// KONDOR - HOJA DE ESTILOS HOME (_home.scss)
+// INCLUYE: Todo lo nuevo, Grilla de Productos, Mosaico de Noticias y Banner
+// =============================================================================
+
+// --- VARIABLES DE MARCA CENTRALIZADAS ---
+$negro-kondor: #111111;
+$naranja-kondor: #e66a00;
+$exito-kondor: #10b981;
+$blanco: #ffffff;
+$fuente-principal: 'inherit';
+
 // --- SECCIÓN "TODO LO NUEVO" ---
 .todo-lo-nuevo {
     padding: 60px 20px;
@@ -16,9 +28,9 @@
             list-style: none;
             margin-bottom: 40px;
             padding: 0;
-            display: flex; // Flex para alinear
-            justify-content: center; // Centrado horizontal
-            gap: 30px; // Separación entre palabras
+            display: flex; 
+            justify-content: center; 
+            gap: 30px; 
 
             li a {
                 text-decoration: none;
@@ -34,42 +46,157 @@
             }
         }
     }
+
+    // --- NUEVA GRILLA COMPONENTIZADA (Alineada con tu HTML e index.js) ---
+    .productos-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); // 4 Columnas como en tu captura
+        gap: 30px; // Espaciado premium entre tarjetas
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px 0;
+
+        // Responsive para la Grilla de Productos
+        @media (max-width: 992px) {
+            grid-template-columns: repeat(2, 1fr); // 2 columnas en tablets
+        }
+        @media (max-width: 576px) {
+            grid-template-columns: 1fr; // 1 columna en celulares
+        }
+    }
+
+    // --- TARJETA DE PRODUCTO URBANA (Efectos de Micro-interacción Senior) ---
+    .product-card {
+        background-color: $blanco;
+        text-align: left; // Alineación clásica de e-commerce
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
+        
+        // Contenedor de la imagen con máscara para evitar desbordes en el zoom
+        .img-container {
+            overflow: hidden; 
+            width: 100%;
+            background-color: #f5f5f5;
+
+            img {
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+                display: block;
+                transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+            }
+        }
+
+        // Información interna de la tarjeta
+        .product-info {
+            padding: 15px 0 0 0;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+
+            h4 {
+                font-size: 14px;
+                font-weight: 600;
+                text-transform: uppercase;
+                margin: 0 0 5px 0;
+                letter-spacing: 0.5px;
+                color: color('black');
+            }
+
+            p {
+                font-size: 16px;
+                font-weight: 700;
+                margin: 0 0 10px 0;
+                color: $negro-kondor;
+            }
+        }
+
+        // --- COMPONENTE: BOTÓN ANIDADO ---
+        .btn-agregar-carrito {
+            background-color: $negro-kondor;
+            color: $blanco;
+            border: 2px solid $negro-kondor;
+            padding: 12px 20px;
+            font-family: $fuente-principal;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 0; // Bordes rectos Streetwear
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            margin-top: auto; // Empuja el botón al fondo si las tarjetas difieren en altura
+            display: block;
+
+            &:hover {
+                background-color: $naranja-kondor;
+                border-color: $naranja-kondor;
+                color: $blanco;
+            }
+
+            &:active {
+                transform: scale(0.98); // Efecto sutil de presión
+            }
+
+            &:disabled {
+                background-color: $exito-kondor !important;
+                border-color: $exito-kondor !important;
+                color: $blanco !important;
+                cursor: not-allowed;
+                transform: none !important;
+                box-shadow: none !important;
+            }
+        }
+
+        // --- DISPARADOR DE HOVER GLOBAL (Afecta a toda la tarjeta) ---
+        &:hover {
+            transform: translateY(-8px); // Elevación de la tarjeta
+            
+            .img-container img {
+                transform: scale(1.06); // Zoom controlado sobre la prenda
+            }
+
+            .btn-agregar-carrito:not(:disabled) {
+                background-color: $naranja-kondor;
+                border-color: $naranja-kondor;
+            }
+        }
+    }
 }
 
 // --- SECCIÓN NOTICIAS (Mosaico) ---
 .news-section {
-
     @include bg-gradiente-seccion;
-
     padding: 60px 50px;
     margin: 0 auto;
     width: 100%;
     padding: 100px 40px;
 
     .section-title {
-        @include heading-style(map-get($heading-sizes, "h2"), 600, color('black')); // Usamos el mixin con un tamaño específico
+        @include heading-style(map-get($heading-sizes, "h2"), 600, color('black')); 
     }
 
     .news-grid {
         display: grid;
-        grid-template-columns: 40% 58%; // Proporción exacta de las columnas del grid
+        grid-template-columns: 40% 58%; 
         gap: 2%;
 
-        // Columna Izquierda (Foto Grande)
         .news-col-left {
             .news-card.vertical-card {
-                height: 620px; // Altura fija para igualar la derecha
+                height: 620px; 
                 width: 100%;
                 background-color: #ddd;
                 img { width: 100%; height: 100%; object-fit: cover; }
             }
         }
 
-        // Columna Derecha (Mix)
         .news-col-right {
             display: flex;
             flex-direction: column;
-            justify-content: space-between; // Separa arriba y abajo
+            justify-content: space-between; 
 
             .news-card.horizontal-card {
                 height: 300px;
@@ -83,7 +210,7 @@
                 justify-content: space-between;
                 
                 .news-card.small-card {
-                    width: 48%; // Casi la mitad
+                    width: 48%; 
                     height: 300px;
                     background-color: #ddd;
                     img { width: 100%; height: 100%; object-fit: cover; }
@@ -92,10 +219,9 @@
         }
     }
 
-    // Responsive para Noticias
     @media (max-width: 768px) {
         .news-grid {
-            grid-template-columns: 1fr; // Una columna
+            grid-template-columns: 1fr; 
             .news-col-left, .news-col-right { width: 100%; }
             .news-card.vertical-card { height: 400px; margin-bottom: 20px; }
             .news-row-bottom { flex-direction: column; gap: 20px; }
@@ -113,7 +239,7 @@
     height: 500px;
     display: flex;
     align-items: center;
-    justify-content: flex-end; // Alineado a la derecha
+    justify-content: flex-end; 
     padding: 0 80px;
 
     .contenido-banner {

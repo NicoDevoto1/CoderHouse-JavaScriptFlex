@@ -21,7 +21,9 @@
     <link rel="icon" href="assets/KondorBlanco.svg" type="image/png">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 </head>
 
@@ -286,13 +288,18 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Toastify -->
-    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <!-- 1. Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- JS de Kondor -->
-    <script src="js/carrito.js"></script>
-    <script src="js/index.js"></script>
+<!-- 2. SweetAlert2 — OBLIGATORIO antes que index.js -->
+<!-- Si esto falta, Swal.mixin() tira un error y toda la página se rompe -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- 3. Módulo compartido del carrito — OBLIGATORIO antes que index.js -->
+<script src="js/carrito.js"></script>
+
+<!-- 4. Lógica de la página principal -->
+<script src="js/index.js"></script>
 
 </body>
 

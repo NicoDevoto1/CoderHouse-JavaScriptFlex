@@ -1,50 +1,54 @@
 // =============================================================================
-// carrito.js — Módulo compartido de gestión del carrito
-// =============================================================================
-// Este archivo se carga en TODAS las páginas del sitio antes del script
-// específico de cada una. Expone funciones globales que los demás scripts
-// consumen para leer, modificar y sincronizar el estado del carrito.
-//
-// Tecnología utilizada: localStorage del navegador, que permite persistir
-// los datos del carrito entre páginas y sesiones sin necesidad de un servidor.
+// KONDOR - Módulo compartido de gestión del carrito (carrito.js)
 // =============================================================================
 
-
-// ─── Constante de clave de almacenamiento ────────────────────────────────────
-// Centralizar la clave evita errores de tipeo si se usa en varios archivos.
-
+/**
+ * Clave única para centralizar el almacenamiento en LocalStorage.
+ * Evita errores de tipeo a lo largo del proyecto.
+ * @type {string}
+ */
 const STORAGE_KEY = 'kondor_carrito';
 
+/**
+ * Obtiene de forma segura los productos almacenados en el LocalStorage.
+ * Aplica programación defensiva mediante try/catch para prevenir fallos 
+ * si el almacenamiento contiene datos corruptos o JSON inválidos.
+ * @returns {Array<Object>} Lista de productos en el carrito o array vacío.
+ */
+const obtenerCarrito = () => {
+  try {
+    const datosGuardados = localStorage.getItem(STORAGE_KEY);
+    // Si existen datos, los parsea; de lo contrario, inicializa un array vacío.
+    return datosGuardados ? JSON.parse(datosGuardados) : [];
+  } catch (error) {
+    // Si el JSON está corrupto, limpia el registro erróneo y retorna un array seguro.
+    localStorage.removeItem(STORAGE_KEY);
+    return [];
+  }
+};
 
-// ─── Lectura y escritura en localStorage ─────────────────────────────────────
-
-// Devuelve el array de items del carrito guardado en localStorage.
-// Si no existe aún (primera visita), retorna un array vacío como valor por defecto.
-// JSON.parse convierte el string guardado de vuelta a un array de objetos JavaScript.
-const obtenerCarrito = () =>
-  JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-
-// Guarda el array del carrito en localStorage serializado como string JSON.
-// Se llama después de cada operación que modifica el estado del carrito.
-const guardarCarrito = (carrito) =>
+/**
+ * Serializa y guarda el estado actual del carrito en LocalStorage.
+ * @param {Array<Object>} carrito - El array de productos actualizado.
+ */
+const guardarCarrito = (carrito) => {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(carrito));
+};
 
-
-// ─── Agregar producto al carrito ─────────────────────────────────────────────
-// Recibe un objeto producto completo (id, nombre, precio, imagen, etc.).
-// Primero busca si el producto ya existe en el carrito usando Array.find().
-// Si existe: incrementa su cantidad en 1.
-// Si es nuevo: lo agrega al array con cantidad inicial 1.
-// El spread operator ({ ...producto }) copia las propiedades del objeto
-// original sin mutarlo, y le suma la propiedad cantidad.
-
+/**
+ * Agrega un producto al carrito aplicando el principio de inmutabilidad con ES6.
+ * Si el producto existe, incrementa su cantidad. Si no, lo inicializa en 1.
+ * @param {Object} producto - Objeto completo del producto a agregar.
+ */
 const agregarAlCarrito = (producto) => {
   const carrito = obtenerCarrito();
+  // Uso de Array.find() para buscar referencias existentes por ID único.
   const existente = carrito.find(item => item.id === producto.id);
 
   if (existente) {
     existente.cantidad += 1;
   } else {
+    // Uso del operador Spread (...) para copiar propiedades y añadir "cantidad" de forma segura
     carrito.push({ ...producto, cantidad: 1 });
   }
 
@@ -52,23 +56,22 @@ const agregarAlCarrito = (producto) => {
   actualizarContadorNavbar();
 };
 
-
-// ─── Eliminar producto del carrito ───────────────────────────────────────────
-// Array.filter crea un nuevo array excluyendo el item con el id recibido.
-// No muta el array original sino que retorna uno nuevo → buena práctica
-// de programación funcional. Luego guarda y sincroniza la navbar.
-
+/**
+ * Remueve un producto completo del carrito utilizando filtrado funcional.
+ * @param {number} id - ID único del producto a eliminar.
+ */
 const eliminarDelCarrito = (id) => {
+  // Array.filter() genera un nuevo array excluyendo el ID seleccionado (no muta el original)
   const carrito = obtenerCarrito().filter(item => item.id !== id);
   guardarCarrito(carrito);
   actualizarContadorNavbar();
 };
 
-
-// ─── Actualizar cantidad de un item ──────────────────────────────────────────
-// Busca el item por id. Si la nueva cantidad es 0 o menor, lo elimina
-// completamente del carrito. De lo contrario, actualiza solo su cantidad.
-
+/**
+ * Actualiza la cantidad específica de un ítem. Si la cantidad baja a 0, lo elimina.
+ * @param {number} id - ID del producto.
+ * @param {number} nuevaCantidad - Nueva cantidad asignada por el usuario.
+ */
 const actualizarCantidad = (id, nuevaCantidad) => {
   const carrito = obtenerCarrito();
   const item = carrito.find(i => i.id === id);
@@ -81,32 +84,38 @@ const actualizarCantidad = (id, nuevaCantidad) => {
 
   item.cantidad = nuevaCantidad;
   guardarCarrito(carrito);
+  actualizarContadorNavbar();
 };
 
-
-// ─── Utilidades de cálculo ───────────────────────────────────────────────────
-
-// Array.reduce recorre el carrito acumulando el subtotal de cada item
-// (precio unitario × cantidad), partiendo desde un acumulador inicial de 0.
+/**
+ * Calcula el monto total acumulado utilizando programación funcional.
+ * @param {Array<Object>} carrito - Estado actual del carrito.
+ * @returns {number} Suma total en formato numérico.
+ */
 const calcularTotal = (carrito) =>
+  // Recorre el array acumulando el precio multiplicado por la cantidad (acumulador inicial: 0)
   carrito.reduce((acum, item) => acum + item.precio * item.cantidad, 0);
 
-// Suma las cantidades individuales de todos los items para el contador de navbar.
+/**
+ * Cuenta la cantidad total de unidades físicas en el carrito para la interfaz.
+ * @param {Array<Object>} carrito - Estado actual del carrito.
+ * @returns {number} Suma de todas las cantidades.
+ */
 const cantidadTotalItems = (carrito) =>
   carrito.reduce((acum, item) => acum + item.cantidad, 0);
 
-// Formatea un número al estilo monetario argentino.
-// toLocaleString('es-AR') convierte 42000 → "42.000" con punto como separador.
+/**
+ * Utilidad internacional de formateo para la moneda local argentina (ARS).
+ * @param {number} precio - Valor numérico bruto.
+ * @returns {string} String formateado (ej: $42.000)
+ */
 const formatearPrecio = (precio) =>
   `$${precio.toLocaleString('es-AR')}`;
 
-
-// ─── Sincronización del contador en la navbar ─────────────────────────────────
-// Actualiza el texto de todos los botones de carrito visibles en la página.
-// querySelectorAll devuelve un NodeList con todos los elementos que coinciden
-// con la clase (desktop y mobile), y forEach los actualiza a todos a la vez.
-// Se llama automáticamente después de cada modificación del carrito.
-
+/**
+ * Sincroniza en tiempo real todos los contadores de la Navbar (Desktop y Mobile).
+ * Utiliza NodeList.forEach para asegurar consistencia en la UI.
+ */
 const actualizarContadorNavbar = () => {
   const carrito = obtenerCarrito();
   const cantidad = cantidadTotalItems(carrito);
